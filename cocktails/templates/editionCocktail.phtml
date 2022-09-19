@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mister Cocktail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/cocktails.css">
+
+    <!-- ICONS : FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+</head>
+
+<body class="container">
+    <nav">
+        <h1>
+            <i class="fas fa-glass-martini-alt"></i>
+            Mister Cocktail - Modifier
+            <i class="fas fa-glass-martini-alt"></i>
+            <?php include 'inc/nav.phtml'; ?>
+        </h1>
+        </nav>
+
+        
+        <hr style="height: 2px; background-color: white">
+
+<main class="row">
+    <div class="col-sm-8 mx-auto">
+        <form method="post" class="border p-3">
+        <?= $msg; // pour afficher des messages utilisateur?>
+        <input type="hidden" name="id" value="<?= $infosCocktail['id']?>">  
+
+            <div class="form-group">
+                <label for="">Nom</label>
+                <input type="text" id="nom" name="nom" class="form-control" value="<?= $infosCocktail['nom']?>">
+            </div>
+            <div class="form-group">
+                <label for="">Description</label>
+                <textarea type="text" id="description" name="description" class="form-control"><?= $infosCocktail['description']?></textarea>
+            </div>
+            <div class="form-group">
+                <label for="">Prix moyen</label>
+                <input type="text" id="prixMoyen" name="prixMoyen" class="form-control" value="<?= $infosCocktail['prixMoyen']?>">
+            </div>
+            <div class="form-group">
+                <label for="anneeConception">Année Conception</label>
+                <input type="text" id="anneeConception" name="anneeConception" class="form-control" value="<?= $infosCocktail['dateConception']?>">
+            </div>
+            <div class="form-group">
+                <label for="famille">Famille</label>
+<select name="famille" id="famille" class="form-control">
+
+<?php foreach ($listeFamille as $famille) { ?>
+    <?php if($famille['id'] == $infosCocktail['idFamille']) { ?>
+
+    <option value="<?= $famille['id']?>" selected><?=$famille['nomFamille']?></option>
+
+    <?php } else { ?>
+
+    <option value="<?= $famille['id']?>"><?=$famille['nomFamille']?></option>
+
+    <?php } ?>
+
+<?php } ?>
+</select>
+            </div>
+            <div class="form-group">
+                <button type="text" name="modifier" id="modifier" class="w-100 btn btn-dark"><i class="fas fa-glass-martini-alt"></i> Modifier <i class="fas fa-glass-martini-alt"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</main>
+
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        
+</body>
+
+
+</html>

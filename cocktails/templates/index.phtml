@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mister Cocktail</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/cocktails.css">
+
+    <!-- ICONS : FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+</head>
+
+<body class="container">
+    <nav">
+        <h1>
+            <i class="fas fa-glass-martini-alt"></i>
+            Mister Cocktail
+            <i class="fas fa-glass-martini-alt"></i>
+            <?php include 'inc/nav.phtml'; ?>
+        </h1>
+        </nav>
+
+        <hr style="height: 2px; background-color: white">
+
+        <div class="row">
+            <div class="col-12 mb-3">
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Filtre par famille
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="index.php">Toutes les familles</a>
+                        <?php foreach ($NbDeCocktailParFamilles as $sousTableau) { ?>
+                            <a class="dropdown-item" href="?famille=<?= $sousTableau['nomFamille'] ?>"><?= $sousTableau['nomFamille'] . ' (' . $sousTableau['nombre'] . ')' ?></a>
+                        <?php } ?>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div> 
+
+<main class="row">
+
+<?php foreach ($listeCocktails as $sousTableau) { ?>
+<?php // debugPrintR($sousTableau); echo '<hr>'; 
+?>
+<div class="col-4">
+<div class="card mb-4" >
+<img class="card-img-top" style="height: 18rem;" src="assets/images/cocktails/<?= $sousTableau['urlPhoto'] ?>" alt="Card image cocktail">
+<div class="card-body">
+    <h5 class="card-title"><?= $sousTableau['nom'] ?></h5>
+    <p class="card-text"><?= iconv_substr($sousTableau['description'], 0, 109); ?>... <a href="detailsCocktail.php?id=<?= $sousTableau['id'] ?>">lire la suite</a></p>
+    <a href="?famille=<?= $sousTableau['nomFamille'] ?>" class="card-link"><?= $sousTableau['nomFamille'] ?></a>
+</div>
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">Prix : <?= $sousTableau['prixMoyen'] ?> €</li>
+    <li class="list-group-item">Année de Conception : <?= $sousTableau['dateConception'] ?></li>
+</ul>   
+</div>
+</div>
+<?php } ?>
+</main>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+
+</html>

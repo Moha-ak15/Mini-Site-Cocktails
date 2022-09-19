@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Mister Cocktail</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400">
+      <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="assets/css/cocktails.css">
+
+      <!-- ICONS : FontAwesome -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+</head>
+
+<body class="container">
+      <nav">
+            <h1>
+                  <i class="fas fa-glass-martini-alt"></i>
+                  Mister Cocktail - Ajouter
+                  <i class="fas fa-glass-martini-alt"></i>
+                  <?php include 'inc/nav.phtml'; ?>
+            </h1>
+            </nav>
+
+            <hr style="height: 2px; background-color: white">
+
+            <main class="row">
+                  <div class="col-sm-6 mx-auto">
+                        <form action="" method="post" class="border p-3" enctype="multipart/form-data">
+                              <?= $msg; // pour afficher des messages utilisateur
+                              ?>
+                              <div class="form-group">
+                                    <label for="nom"><i class="fas fa-glass-martini-alt"></i> Nom </label>
+                                    <input type="text" name="nom" id="nom" value="" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                    <label for="description"><i class="fas fa-align-justify"></i> Description</label>
+                                    <textarea name="description" id="description" class="form-control"></textarea>
+                              </div>
+                              <div class="form-group">
+                                    <label for="urlPhoto"><i class="far fa-image"></i> Photo</label>
+                                    <input type="file" name="urlPhoto" id="urlPhoto" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                    <label for="prixMoyen"><i class="fas fa-euro-sign"></i> Prix moyen</label>
+                                    <input type="text" name="prixMoyen" id="prixMoyen" value="" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                    <label for="anneeConception"><i class="far fa-calendar-alt"></i> Année Conception</label>
+                                    <input type="text" placeholder="1900" name="anneeConception" id="anneeConception" value="" class="form-control">
+                              </div>
+                              <div class="form-group">
+                                    <label for="idFamille"><i class="fas fa-child"></i> Famille</label>
+                                    <select name="idFamille" id="idFamille" class="form-control">
+                                          <option value="Choisir la famille" selected disabled>Choisir la famille</option>
+                                          <?php foreach ($ListerFamille as $famille) { ?>
+                                                <option value="<?= $famille['id'] ?>"><?= $famille['nomFamille'] ?></option>
+                                          <?php } ?>
+                                    </select>
+                              </div>
+                              <div class="form-group">
+                                    <button type="text" name="ajouter" id="ajouter" class="w-100 btn btn-dark"><i class="fas fa-glass-martini-alt"></i> Ajouter <i class="fas fa-glass-martini-alt"></i></button>
+                              </div>
+                        </form>
+                  </div>
+
+
+                  <div class="col-6 mx-auto mt-5">
+                        <a class="w-100 btn btn-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                              Ajouter une nouvelle famille ?
+                        </a>
+                        <div class="collapse <?= $show; ?>" id="collapseExample">
+                              <div class="card card-body">
+                                    <form method="post" class="border p-3">
+                                          <?= $msgFamille; ?>
+                                          <div class="form-group">
+                                                <label for="nomFamille"><i class="fas fa-child"></i> Ajouter une nouvelle famille</label>
+                                                <input type="text" name="nomFamille" id="nomFamille" class="form-control">
+                                          </div>
+
+                                          <div class="input-group">
+                                                <button type="submit" name="ajouterFamille" id="ajouterFamille" class="w-100 btn btn-dark"> Ajouter </button>
+                                          </div>
+                                    </form>
+                              </div>
+                        </div>
+
+                        <hr>
+
+                        <a class="w-100 btn btn-dark" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
+                              Ajouter un nouveau ingredient ?
+                        </a>
+                        <div class="collapse <?= $show1; ?>" id="collapseExample2">
+                              <div class="card card-body">
+                                    <form method="post" class="border p-3">
+                                          <?= $msgIngredient; ?>
+                                          <div class="form-group">
+                                                <label for="nomIngredient"><i class="fas fa-utensils"></i> Ajouter un nouveau ingredient</label>
+                                                <input type="text" name="nomIngredient" id="nomIngredient" class="form-control">
+                                          </div>
+
+                                          <div class="input-group">
+                                                <button type="submit" name="ajouterIngredient" id="ajouterIngredient" class="w-100 btn btn-dark"> Ajouter </button>
+                                          </div>
+                                    </form>
+                              </div>
+                        </div>
+
+                        <hr>
+
+                        <a class="w-100 btn btn-dark" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
+                              Affectation ?
+                        </a>
+                        <div class="collapse <?= $show3; ?>" id="collapseExample3">
+                              <div class="card card-body">
+                                    <form method="post">
+                                          <?= $msgRelation ?>
+                                          <div class="form-group">
+                                                <label for="idCocktail">Cocktails</label>
+                                                <select name="idCocktail" id="idCocktail" value="" class="form-control">
+                                                      <?php foreach ($listeCocktails as $cocktail) { ?>
+                                                            <option value="<?= $cocktail['id'] ?>"><?= $cocktail['nom'] ?></option>
+                                                      <?php } ?>
+                                                </select>
+                                          </div>
+                                          <div class="form-group">
+                                                <label for="idIngredient">Ingrédients</label>
+                                                <select name="idIngredient" id="idIngredient" value="" class="form-control">
+                                                      <?php foreach ($listeIngredients as $ingredients) { ?>
+                                                            <option value="<?= $ingredients['id'] ?>"><?= $ingredients['nomIngredient'] ?></option>
+                                                      <?php } ?>
+                                                </select>
+                                          </div>
+                                          <div class="input-group">
+                                                <button type="submit" name="ajouterIngredient" id="ajouterIngredient" class="w-100 btn btn-dark"> Ajouter </button>
+                                          </div>
+                                    </form>
+                              </div>
+                        </div>
+                  </div>
+
+            </main>
+
+
+
+
+
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+
+</html>

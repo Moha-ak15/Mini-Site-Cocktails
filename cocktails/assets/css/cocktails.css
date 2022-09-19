@@ -1,0 +1,80 @@
+*
+{
+    box-sizing: border-box;
+}
+
+body
+{
+    background: linear-gradient(to bottom, #fceabb, #f8b500);
+    font-family: Montserrat, sans-serif;
+    max-width: 1024px;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+h1,h5{
+    text-align: center;
+    font-family: 'Permanent Marker', cursive;
+}
+
+h2
+{
+    color: #19547b;
+    text-decoration: underline;
+    text-decoration-color: #19547b;
+}
+
+h3{
+    font-family: 'Permanent Marker', cursive;
+    text-decoration: underline;
+}
+
+h4
+{
+    color: #19547b;
+}
+
+main
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+nav
+{
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.cocktail
+{
+    margin-bottom: 3rem;
+    width: 16rem;
+}
+.cocktail .card-text
+{
+    font-size: 90%;
+    text-align: justify;
+}
+
+th{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.fa-edit {
+    color: black;
+  }
+
+.fa-trash-alt {
+    color: red;
+  }
+
+.fa-trash-alt:hover {
+    opacity: 0.5;
+}
+
+.fa-edit:hover {
+    opacity: 0.2;
+  }

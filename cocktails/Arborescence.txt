@@ -1,0 +1,40 @@
+BDD: MisterCocktail
+
+Table 1 : Famille
+    - id_Famille INT(11) PK AI
+    - nomFamille VARCHAR (255)
+
+Table 2 : Cocktail
+    - id_Cocktail INT(11) PK AI
+    - nom VARCHAR (255)
+    - description TEXT
+    - urlPhoto VARCHAR (255)
+    - dateConception date
+    - prixMoyen FLOAT
+    - id_Famille INT(11) 
+
+
+Arborescence fichier
+
+    cocktails/
+        - lib/
+            - database.php
+        - models/ 
+            -cocktail.php
+        - sql/
+            - MisterCocktail.sql (export complet)
+        - templates/
+            - index.phtml
+            - ajoutCocktail.phtml
+            - backOffice.phtml
+            - editionCocktail.phtml
+
+        - assets/
+            - css/
+            - images/
+            - js/ 
+                - script.js
+    - index.php
+    - ajoutCocktail.php 
+    - backOffice.php
+    - editionCocktail.php
